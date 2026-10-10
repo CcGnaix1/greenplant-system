@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.DiagnosisRecordMapper">
+    <!-- 保存 AI 诊断结果并维护用户反馈。 -->
+    <select id="findById" resultType="com.greenplant.entity.DiagnosisRecord">
+        SELECT id, plant_id, user_id, symptoms, report, feedback, created_at FROM diagnosis_record WHERE id=#{id}
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO diagnosis_record(plant_id, user_id, symptoms, report, feedback, created_at)
+        VALUES(#{plantId}, #{userId}, #{symptoms}, #{report}, #{feedback}, #{createdAt})
+    </insert>
+    <update id="update">
+        UPDATE diagnosis_record SET plant_id=#{plantId}, user_id=#{userId}, symptoms=#{symptoms},
+        report=#{report}, feedback=#{feedback} WHERE id=#{id}
+    </update>
+</mapper>

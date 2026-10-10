@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="card intro">
+    <view class="intro-title">按手机号添加家庭成员</view>
+    <view class="note">对方需要先在登录页使用手机号完成注册。添加成功后，对方再次登录即可进入你的家庭组。</view>
+  </view>
+
+  <view class="card">
+    <view class="field">
+      <label>成员手机号</label>
+      <view class="ctrl"><input type="number" maxlength="11" value="{{phone}}" bindinput="onPhone" placeholder="请输入对方已注册的手机号" /></view>
+    </view>
+    <view class="field">
+      <label>家庭分工</label>
+      <view class="ctrl"><input maxlength="30" value="{{duty}}" bindinput="onDuty" placeholder="如：负责客厅植物浇水" /></view>
+    </view>
+    <view class="role-row">
+      <text>成员角色</text>
+      <text class="chip">普通成员</text>
+    </view>
+  </view>
+
+  <view class="btn {{loading ? 'disabled' : ''}}" bindtap="submit">{{loading ? '正在添加…' : '确认添加成员'}}</view>
+</view>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.NotificationMapper">
+    <!-- 查询用户通知并更新已读状态。 -->
+    <select id="findById" resultType="com.greenplant.entity.Notification">
+        SELECT id, user_id, title, is_read, created_at FROM notification WHERE id=#{id}
+    </select>
+    <select id="findByUserIdAndIsReadOrderByCreatedAtDesc" resultType="com.greenplant.entity.Notification">
+        SELECT id, user_id, title, is_read, created_at FROM notification
+        WHERE user_id=#{userId} AND is_read=#{isRead} ORDER BY created_at DESC
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO notification(user_id, title, is_read, created_at)
+        VALUES(#{userId}, #{title}, #{isRead}, #{createdAt})
+    </insert>
+    <update id="update">UPDATE notification SET user_id=#{userId}, title=#{title}, is_read=#{isRead} WHERE id=#{id}</update>
+</mapper>

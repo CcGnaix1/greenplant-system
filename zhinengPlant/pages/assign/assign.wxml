@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="card">
+    <view class="field">
+      <label>选择植物</label>
+      <picker range="{{plants}}" range-key="name" value="{{plantIdx}}" bindchange="onPlant">
+        <view class="ctrl">{{plants.length ? plants[plantIdx].name : '暂无植物'}} <text class="arrow">›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <label>分配给</label>
+      <picker range="{{members}}" range-key="name" value="{{memberIdx}}" bindchange="onMember">
+        <view class="ctrl">{{members.length ? members[memberIdx].name : '暂无成员'}} <text class="arrow">›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <label>截止时间</label>
+      <picker mode="date" value="{{due}}" bindchange="onDue">
+        <view class="ctrl">{{due || '选择日期'}} <text class="arrow">›</text></view>
+      </picker>
+    </view>
+    <view class="field">
+      <label>任务备注</label>
+      <view class="ctrl"><input value="{{note}}" bindinput="onNote" placeholder="如：浇透并擦叶" /></view>
+    </view>
+  </view>
+  <view class="btn" bindtap="submit">确认分配</view>
+</view>

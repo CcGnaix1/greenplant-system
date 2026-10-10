@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.KnowledgeContentMapper">
+    <!-- 根据品种读取习性、养护方法和常见问题。 -->
+    <select id="findBySpeciesId" resultType="com.greenplant.entity.KnowledgeContent">
+        SELECT id, species_id, habit, seasons, water, fertilize, breed, faq
+        FROM knowledge_content WHERE species_id=#{speciesId}
+    </select>
+</mapper>

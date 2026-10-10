@@ -1,0 +1,268 @@
+{
+  "indomain": {
+    "n": 10709,
+    "acc": 0.9985993089924363,
+    "macro_recall": 0.9988417815411088,
+    "per_class_recall": {
+      "healthy": 0.9980092899800929,
+      "leaf_spot": 0.9981663992665597,
+      "pest_damage": 0.996875,
+      "powdery_mildew": 1.0,
+      "rust": 1.0,
+      "yellowing": 1.0
+    }
+  },
+  "crossdomain_observation": {
+    "note": "无症状标注，仅为误报倾向观察，不是准确率",
+    "n": 240,
+    "pred_distribution": {
+      "leaf_spot": 159,
+      "healthy": 71,
+      "powdery_mildew": 5,
+      "yellowing": 5
+    },
+    "healthy_rate": 0.29583333333333334,
+    "high_conf_false_positives": 19,
+    "high_conf_details": [
+      {
+        "species": "万年青",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\万年青\\734060505.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8100271821022034
+      },
+      {
+        "species": "富贵竹",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\富贵竹\\656387359.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8203408718109131
+      },
+      {
+        "species": "富贵竹",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\富贵竹\\709690813.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8026683330535889
+      },
+      {
+        "species": "富贵竹",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\富贵竹\\703109039.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.816718578338623
+      },
+      {
+        "species": "文竹",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\文竹\\666088593.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8110131025314331
+      },
+      {
+        "species": "波斯顿蕨",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\波斯顿蕨\\729064785.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8163868188858032
+      },
+      {
+        "species": "琴叶榕",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\琴叶榕\\727401668.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8216844201087952
+      },
+      {
+        "species": "琴叶榕",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\琴叶榕\\730883899.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8129428625106812
+      },
+      {
+        "species": "白掌",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\白掌\\722471696.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8020263910293579
+      },
+      {
+        "species": "芦荟",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\芦荟\\740321242.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8294194340705872
+      },
+      {
+        "species": "薄荷",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\薄荷\\717508726.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.823444664478302
+      },
+      {
+        "species": "薄荷",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\薄荷\\735623806.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8029982447624207
+      },
+      {
+        "species": "薄荷",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\薄荷\\723972438.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8368732929229736
+      },
+      {
+        "species": "虎皮兰",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\虎皮兰\\736978641.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8122163414955139
+      },
+      {
+        "species": "虎皮兰",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\虎皮兰\\739379988.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8001223206520081
+      },
+      {
+        "species": "虎皮兰",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\虎皮兰\\734195665.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8199588060379028
+      },
+      {
+        "species": "豆瓣绿",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\豆瓣绿\\683424953.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8000761270523071
+      },
+      {
+        "species": "迷迭香",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\迷迭香\\739925888.jpg",
+        "pred": "powdery_mildew",
+        "conf": 0.9289083480834961
+      },
+      {
+        "species": "鹤望兰",
+        "path": "D:\\Plant\\plant-ai\\data\\plants_indoor\\鹤望兰\\742341599.jpg",
+        "pred": "leaf_spot",
+        "conf": 0.8018466234207153
+      }
+    ],
+    "per_species": {
+      "万年青": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "兰花": {
+        "healthy": 2,
+        "leaf_spot": 5,
+        "powdery_mildew": 1
+      },
+      "发财树": {
+        "leaf_spot": 5,
+        "healthy": 3
+      },
+      "吊兰": {
+        "leaf_spot": 4,
+        "healthy": 4
+      },
+      "多肉植物": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "富贵竹": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "常春藤": {
+        "leaf_spot": 2,
+        "healthy": 6
+      },
+      "散尾葵": {
+        "healthy": 6,
+        "leaf_spot": 2
+      },
+      "文竹": {
+        "leaf_spot": 6,
+        "powdery_mildew": 2
+      },
+      "栀子花": {
+        "leaf_spot": 6,
+        "healthy": 2
+      },
+      "橡皮树": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "波斯顿蕨": {
+        "leaf_spot": 6,
+        "yellowing": 1,
+        "healthy": 1
+      },
+      "琴叶榕": {
+        "leaf_spot": 8
+      },
+      "白掌": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "竹芋": {
+        "leaf_spot": 2,
+        "healthy": 5,
+        "yellowing": 1
+      },
+      "红掌": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "绿萝": {
+        "leaf_spot": 8
+      },
+      "芦荟": {
+        "healthy": 4,
+        "leaf_spot": 4
+      },
+      "茉莉花": {
+        "leaf_spot": 6,
+        "healthy": 2
+      },
+      "薄荷": {
+        "leaf_spot": 7,
+        "healthy": 1
+      },
+      "虎皮兰": {
+        "leaf_spot": 6,
+        "healthy": 2
+      },
+      "袖珍椰子": {
+        "yellowing": 1,
+        "healthy": 4,
+        "leaf_spot": 3
+      },
+      "豆瓣绿": {
+        "healthy": 1,
+        "leaf_spot": 7
+      },
+      "迷迭香": {
+        "yellowing": 2,
+        "powdery_mildew": 2,
+        "healthy": 4
+      },
+      "金钱树": {
+        "healthy": 1,
+        "leaf_spot": 7
+      },
+      "铜钱草": {
+        "leaf_spot": 6,
+        "healthy": 2
+      },
+      "鹅掌柴": {
+        "healthy": 6,
+        "leaf_spot": 2
+      },
+      "鹤望兰": {
+        "leaf_spot": 5,
+        "healthy": 3
+      },
+      "龙血树": {
+        "healthy": 5,
+        "leaf_spot": 3
+      },
+      "龟背竹": {
+        "healthy": 1,
+        "leaf_spot": 7
+      }
+    }
+  }
+}

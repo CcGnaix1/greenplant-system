@@ -1,0 +1,25 @@
+<view class="page">
+  <view class="card">
+    <view class="card-title">近 4 周浇水频率</view>
+    <view class="bars">
+      <view wx:for="{{weeks}}" wx:key="*this" class="bar-col">
+        <view class="bar" style="height: {{item === '本周' ? 80 : item === '上周' ? 40 : item === '2周前' ? 60 : 30}}rpx"></view>
+        <view class="bar-x">{{item}}</view>
+      </view>
+    </view>
+    <view class="stat-line"><text>本月共浇水 {{waterTotal}} 次</text><text>建议 {{avgWater}} 天一次</text></view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">株高增长趋势（cm）</view>
+    <view class="hbars">
+      <view wx:for="{{bars}}" wx:key="m" class="h-col">
+        <view class="h-val">{{item.h}}</view>
+        <view class="h-bar" style="height: {{item.pct}}%"></view>
+        <view class="h-x">{{item.m}}</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="note note-center">数据为演示样例，接入后端后自动统计真实养护记录</view>
+</view>

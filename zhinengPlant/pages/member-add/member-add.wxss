@@ -1,0 +1,4 @@
+.intro { background: #f0fdf4; border-color: #bbf7d0; }
+.intro-title { color: #15803d; font-size: 28rpx; font-weight: 600; }
+.role-row { display: flex; align-items: center; justify-content: space-between; color: #4b5563; font-size: 24rpx; padding-top: 8rpx; }
+.btn.disabled { opacity: .65; }

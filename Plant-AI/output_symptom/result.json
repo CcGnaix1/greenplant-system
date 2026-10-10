@@ -1,0 +1,38 @@
+{
+  "num_classes": 6,
+  "classes": [
+    "healthy",
+    "leaf_spot",
+    "pest_damage",
+    "powdery_mildew",
+    "rust",
+    "yellowing"
+  ],
+  "composite_prob": 0.7,
+  "real_healthy_frac": 0.25,
+  "best_epoch": 9,
+  "selection_metric": "0.5*pv_test_macro_recall + 0.5*real_healthy_rate",
+  "in_domain": {
+    "acc": 0.9960780651788216,
+    "macro_recall": 0.9974706621446608,
+    "per_class_recall": {
+      "healthy": 0.9980092899800929,
+      "leaf_spot": 0.9922071968828787,
+      "pest_damage": 1.0,
+      "powdery_mildew": 0.998324958123953,
+      "rust": 0.9962825278810409,
+      "yellowing": 1.0
+    }
+  },
+  "cross_domain": {
+    "n": 1377,
+    "healthy_rate": 1.0,
+    "high_conf_false_positives": 0,
+    "note": "无健康标注，为误报倾向观察"
+  },
+  "v1_baseline": {
+    "real_healthy_rate": 0.296,
+    "high_conf_false_positive_rate": 0.079
+  },
+  "caveat": "权重来自被中断的训练运行；评估用的划分是 md5 分桶，可复现"
+}

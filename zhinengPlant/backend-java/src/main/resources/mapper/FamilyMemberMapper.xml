@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.FamilyMemberMapper">
+    <!-- 家庭成员列表、成员归属校验和新增成员。 -->
+    <select id="findByFamilyIdOrderByIdAsc" resultType="com.greenplant.entity.FamilyMember">
+        SELECT id, family_id, user_id, role, duty FROM family_members WHERE family_id=#{familyId} ORDER BY id ASC
+    </select>
+    <select id="existsByFamilyIdAndUserId" resultType="boolean">
+        SELECT COUNT(*) > 0 FROM family_members WHERE family_id=#{familyId} AND user_id=#{userId}
+    </select>
+    <select id="existsByUserId" resultType="boolean">SELECT COUNT(*) > 0 FROM family_members WHERE user_id=#{userId}</select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO family_members(family_id, user_id, role, duty) VALUES(#{familyId}, #{userId}, #{role}, #{duty})
+    </insert>
+    <update id="update">
+        UPDATE family_members SET family_id=#{familyId}, user_id=#{userId}, role=#{role}, duty=#{duty} WHERE id=#{id}
+    </update>
+</mapper>

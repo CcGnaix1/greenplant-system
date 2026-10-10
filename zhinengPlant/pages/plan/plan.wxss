@@ -1,0 +1,2 @@
+.tip { background: #fffbeb; border-color: #fde68a; }
+.msg { font-size: 26rpx; color: #92400e; line-height: 1.6; }

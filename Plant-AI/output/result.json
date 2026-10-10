@@ -1,0 +1,26 @@
+{
+  "num_classes": 42,
+  "best_epoch": 19,
+  "init": "",
+  "transferred_tensors": 0,
+  "sizes": {
+    "wild_train": 4950,
+    "wild_val": 1238,
+    "indoor_train": 6611,
+    "indoor_val": 1414,
+    "indoor_test": 1418
+  },
+  "metrics": {
+    "wild_val": 0.9458804523424879,
+    "indoor_val": 0.9314002828854314,
+    "indoor_test": 0.9231311706629055,
+    "wild_val_orig20": 0.9383429672447013,
+    "indoor_test_orig20": 0.9248704663212435,
+    "wild_val_new10": 0.9513212795549374,
+    "indoor_test_new10": 0.9210526315789473
+  },
+  "baseline_20class": {
+    "wild_val": 0.9225,
+    "indoor_test": 0.8591
+  }
+}

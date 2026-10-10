@@ -1,0 +1,41 @@
+<view class="page scan-page">
+  <view class="scan-hero">
+    <view class="hero-glow glow-one"></view><view class="hero-glow glow-two"></view>
+    <view class="intro-tag"><text class="tag-dot"></text> AI 植物识别</view>
+    <view class="intro-title">发现身边的每一株绿意</view>
+    <view class="intro-sub">拍一张照片，快速了解植物品种</view>
+    <view class="tips"><view class="tip"><text>◉</text> 光线充足</view><view class="tip"><text>♧</text> 叶片清晰</view><view class="tip"><text>▣</text> 主体完整</view></view>
+  </view>
+
+  <view wx:if="{{stage==='idle'}}" class="capture-card">
+    <view class="capture-area" bindtap="chooseImage" data-type="camera">
+      <view class="corner lt"></view><view class="corner rt"></view><view class="corner lb"></view><view class="corner rb"></view>
+      <view class="camera-icon"><view class="lens">◉</view></view>
+      <view class="capture-title">拍照识别植物</view>
+      <view class="capture-sub">将植物完整放入画面中央</view>
+      <view class="camera-btn">打开相机 <text>›</text></view>
+    </view>
+    <view class="album-btn" bindtap="chooseImage" data-type="album"><view class="album-icon">▧</view><view><view class="album-title">从相册选择</view><view class="album-sub">使用手机中已有的植物照片</view></view><view class="album-arrow">›</view></view>
+    <view class="privacy-note">图片仅用于本次本地模型识别</view>
+  </view>
+
+  <view wx:if="{{stage==='loading'}}" class="state-card">
+    <view class="preview-wrap"><image wx:if="{{image}}" src="{{image}}" class="preview" mode="aspectFill" /><view class="scan-line"></view></view>
+    <view class="loading-icon"><view></view><view></view><view></view></view>
+    <view class="loading-title">正在识别植物…</view><view class="loading-sub">本地模型正在分析叶片与形态特征</view>
+  </view>
+
+  <view wx:if="{{stage==='result'}}" class="result-wrap">
+    <view class="result-card">
+      <view class="result-head"><view><view class="result-kicker">识别完成</view><view class="result-title">发现一株植物</view></view><view class="confidence"><text>{{confidence}}</text>%<view>置信度</view></view></view>
+      <view wx:for="{{candidates}}" wx:key="species" class="result-main" data-sp="{{item.species}}" bindtap="pickSpecies">
+        <view class="result-leaf">♧</view><view class="result-copy"><view class="species-name">{{item.species}}</view><view class="species-hint">点击查看并建立专属植物档案</view></view><view class="result-arrow">›</view>
+      </view>
+    </view>
+    <view class="retry-btn" bindtap="retry">重新识别</view>
+  </view>
+
+  <view class="diagnose-card" bindtap="goDiagnose">
+    <view class="diagnose-icon">诊</view><view class="diagnose-copy"><view class="diag-t">植物看起来不舒服？</view><view class="diag-s">叶片发黄、长斑或有虫害，试试健康诊断</view></view><view class="diag-go">›</view>
+  </view>
+</view>

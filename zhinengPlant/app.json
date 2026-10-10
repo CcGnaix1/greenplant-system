@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/scan/scan",
+    "pages/kb/kb",
+    "pages/mine/mine",
+    "pages/login/login",
+    "pages/create/create",
+    "pages/detail/detail",
+    "pages/record/record",
+    "pages/timeline/timeline",
+    "pages/stats/stats",
+    "pages/diagnose/diagnose",
+    "pages/kbd/kbd",
+    "pages/plan/plan",
+    "pages/family/family",
+    "pages/member-add/member-add",
+    "pages/assign/assign",
+    "pages/export/export"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "绿植智能养护",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f3f6f2"
+  },
+  "tabBar": {
+    "color": "#9ca3af",
+    "selectedColor": "#16a34a",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      { "pagePath": "pages/home/home", "text": "首页" },
+      { "pagePath": "pages/scan/scan", "text": "识别" },
+      { "pagePath": "pages/kb/kb", "text": "知识库" },
+      { "pagePath": "pages/mine/mine", "text": "我的" }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

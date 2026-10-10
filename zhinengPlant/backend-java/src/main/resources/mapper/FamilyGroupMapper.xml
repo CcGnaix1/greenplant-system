@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.FamilyGroupMapper">
+    <!-- 家庭组创建、查询和管理员信息维护。 -->
+    <select id="findById" resultType="com.greenplant.entity.FamilyGroup">
+        SELECT id, name, owner_id, invite_code, created_at FROM family_groups WHERE id=#{id}
+    </select>
+    <select id="existsById" resultType="boolean">SELECT COUNT(*) > 0 FROM family_groups WHERE id=#{id}</select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO family_groups(name, owner_id, invite_code, created_at)
+        VALUES(#{name}, #{ownerId}, #{inviteCode}, #{createdAt})
+    </insert>
+    <update id="update">
+        UPDATE family_groups SET name=#{name}, owner_id=#{ownerId}, invite_code=#{inviteCode} WHERE id=#{id}
+    </update>
+</mapper>

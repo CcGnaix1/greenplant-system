@@ -1,0 +1,80 @@
+{
+  "_note": "症状识别模型的类别单一事实来源。PlantVillage 的 38 个『作物+病害』标签全部重映射到这里定义的少数几个『症状大类』。为什么这么做：公开病害数据集只有粮食作物，与用户的 30 种观叶绿植零重叠；但症状外观跨物种通用（叶斑在绿萝上是叶斑，在龟背竹上也是叶斑），所以按症状建类比按作物建类可泛化。类别顺序由 PlantDataset 的 sorted() 决定，labels.json 由训练脚本按 sorted 顺序写。",
+  "_source": "PlantVillage (mohanty/PlantVillage, CC-BY-SA-3.0)",
+  "_pv_class_count": 38,
+
+  "_dict_note": "dict_code 把症状大类映射到 plant_db.symptom_dict.code，诊断文案直接复用已有字典，不重复写文案。healthy 无对应 code（不生成病害建议）。",
+
+  "symptoms": ["healthy", "leaf_spot", "pest_damage", "powdery_mildew", "rust", "yellowing"],
+
+  "labels": {
+    "healthy": "健康",
+    "leaf_spot": "叶斑/坏死病",
+    "pest_damage": "虫害(螨类/刺吸)",
+    "powdery_mildew": "白粉病",
+    "rust": "锈病",
+    "yellowing": "黄化/失绿"
+  },
+
+  "dict_code": {
+    "leaf_spot": "leaf_spot_brown",
+    "powdery_mildew": "leaf_spot_white",
+    "yellowing": "yellowing_whole",
+    "pest_damage": "spider_mite",
+    "rust": "rust"
+  },
+
+  "_mapping_note": "键必须与 PlantVillage 压缩包内的目录名逐字符一致（含逗号、括号、结尾下划线）。prepare_symptom_data.py 会校验：未映射的目录直接报错退出，避免静默漏类。",
+  "mapping": {
+    "Apple___Apple_scab": "leaf_spot",
+    "Apple___Black_rot": "leaf_spot",
+    "Apple___Cedar_apple_rust": "rust",
+    "Apple___healthy": "healthy",
+
+    "Blueberry___healthy": "healthy",
+
+    "Cherry_(including_sour)___Powdery_mildew": "powdery_mildew",
+    "Cherry_(including_sour)___healthy": "healthy",
+
+    "Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot": "leaf_spot",
+    "Corn_(maize)___Common_rust_": "rust",
+    "Corn_(maize)___Northern_Leaf_Blight": "leaf_spot",
+    "Corn_(maize)___healthy": "healthy",
+
+    "Grape___Black_rot": "leaf_spot",
+    "Grape___Esca_(Black_Measles)": "leaf_spot",
+    "Grape___Leaf_blight_(Isariopsis_Leaf_Spot)": "leaf_spot",
+    "Grape___healthy": "healthy",
+
+    "Orange___Haunglongbing_(Citrus_greening)": "yellowing",
+
+    "Peach___Bacterial_spot": "leaf_spot",
+    "Peach___healthy": "healthy",
+
+    "Pepper,_bell___Bacterial_spot": "leaf_spot",
+    "Pepper,_bell___healthy": "healthy",
+
+    "Potato___Early_blight": "leaf_spot",
+    "Potato___Late_blight": "leaf_spot",
+    "Potato___healthy": "healthy",
+
+    "Raspberry___healthy": "healthy",
+    "Soybean___healthy": "healthy",
+
+    "Squash___Powdery_mildew": "powdery_mildew",
+
+    "Strawberry___Leaf_scorch": "leaf_spot",
+    "Strawberry___healthy": "healthy",
+
+    "Tomato___Bacterial_spot": "leaf_spot",
+    "Tomato___Early_blight": "leaf_spot",
+    "Tomato___Late_blight": "leaf_spot",
+    "Tomato___Leaf_Mold": "leaf_spot",
+    "Tomato___Septoria_leaf_spot": "leaf_spot",
+    "Tomato___Spider_mites Two-spotted_spider_mite": "pest_damage",
+    "Tomato___Target_Spot": "leaf_spot",
+    "Tomato___Tomato_Yellow_Leaf_Curl_Virus": "yellowing",
+    "Tomato___Tomato_mosaic_virus": "yellowing",
+    "Tomato___healthy": "healthy"
+  }
+}

@@ -1,0 +1,92 @@
+[
+  {
+    "epoch": 1,
+    "train_acc": 0.9172742072480181,
+    "pv_test_macro_recall": 0.9793064768494474,
+    "pv_test_acc": 0.981604258100663,
+    "real_healthy_rate": 0.990559186637618,
+    "high_conf_false_positives": 0,
+    "score": 0.9849328317435326
+  },
+  {
+    "epoch": 2,
+    "train_acc": 0.9550360985277463,
+    "pv_test_macro_recall": 0.9892029062056662,
+    "pv_test_acc": 0.9871136427304137,
+    "real_healthy_rate": 0.9992737835875091,
+    "high_conf_false_positives": 0,
+    "score": 0.9942383448965877
+  },
+  {
+    "epoch": 3,
+    "train_acc": 0.9631936579841449,
+    "pv_test_macro_recall": 0.9896342503521609,
+    "pv_test_acc": 0.97824259968251,
+    "real_healthy_rate": 0.9978213507625272,
+    "high_conf_false_positives": 0,
+    "score": 0.993727800557344
+  },
+  {
+    "epoch": 4,
+    "train_acc": 0.9688561721404304,
+    "pv_test_macro_recall": 0.994816830360587,
+    "pv_test_acc": 0.9899150247455412,
+    "real_healthy_rate": 0.9985475671750181,
+    "high_conf_false_positives": 1,
+    "score": 0.9966821987678025
+  },
+  {
+    "epoch": 5,
+    "train_acc": 0.9727491506228766,
+    "pv_test_macro_recall": 0.9958237475470776,
+    "pv_test_acc": 0.9914090951536091,
+    "real_healthy_rate": 0.9985475671750181,
+    "high_conf_false_positives": 0,
+    "score": 0.9971856573610478
+  },
+  {
+    "epoch": 6,
+    "train_acc": 0.9760581823329558,
+    "pv_test_macro_recall": 0.99266376126881,
+    "pv_test_acc": 0.9905686805490709,
+    "real_healthy_rate": 1.0,
+    "high_conf_false_positives": 0,
+    "score": 0.996331880634405
+  },
+  {
+    "epoch": 7,
+    "train_acc": 0.9794379954699887,
+    "pv_test_macro_recall": 0.9938412616071249,
+    "pv_test_acc": 0.9908488187505836,
+    "real_healthy_rate": 0.9978213507625272,
+    "high_conf_false_positives": 0,
+    "score": 0.9958313061848261
+  },
+  {
+    "epoch": 8,
+    "train_acc": 0.982340033975085,
+    "pv_test_macro_recall": 0.9959081613015014,
+    "pv_test_acc": 0.9935568213652068,
+    "real_healthy_rate": 1.0,
+    "high_conf_false_positives": 0,
+    "score": 0.9979540806507508
+  },
+  {
+    "epoch": 9,
+    "train_acc": 0.9834371460928653,
+    "pv_test_macro_recall": 0.9974706621446608,
+    "pv_test_acc": 0.9960780651788216,
+    "real_healthy_rate": 1.0,
+    "high_conf_false_positives": 0,
+    "score": 0.9987353310723304
+  },
+  {
+    "epoch": 10,
+    "train_acc": 0.9845165628539071,
+    "pv_test_macro_recall": 0.9969434826200495,
+    "pv_test_acc": 0.9963582033803343,
+    "real_healthy_rate": 0.9985475671750181,
+    "high_conf_false_positives": 0,
+    "score": 0.9977455248975338
+  }
+]

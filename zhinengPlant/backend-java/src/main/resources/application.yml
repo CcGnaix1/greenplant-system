@@ -1,0 +1,84 @@
+server:
+  # 【通常不用改】Java 后端端口；如果 8081 被占用，可通过 SERVER_PORT 修改。
+  port: ${SERVER_PORT:8081}
+
+spring:
+  config:
+    # 【IDEA 直接运行支持】自动读取 Plant/.env。
+    # backend-java 的默认工作目录下，../../.env 正好指向项目总目录的配置文件。
+    # 若 IDEA 自定义了 Working directory，可设置环境变量 PLANT_ENV_FILE 为 .env 的绝对路径。
+    import: optional:file:${PLANT_ENV_FILE:../../.env}[.properties]
+  profiles:
+    active: dev
+  datasource:
+    # ==================== 【必须检查：MySQL】 ====================
+    # 接收项目后请在 Plant/.env 中填写 MYSQL_HOST、MYSQL_PORT、MYSQL_DATABASE、
+    # MYSQL_USERNAME、MYSQL_PASSWORD，不建议把真实密码直接写进本文件。
+    # MySQL 连接地址：localhost:3306 为本机 MySQL，greenplant 为数据库名
+    # useUnicode=true：启用 Unicode 字符支持
+    # characterEncoding=utf8：连接使用 UTF-8 编码
+    # serverTimezone=Asia/Shanghai：数据库连接使用上海时区
+    # createDatabaseIfNotExist=true：数据库不存在时尝试自动创建
+    # allowPublicKeyRetrieval=true：允许 MySQL 8 获取登录公钥，避免认证失败
+    # useSSL=false：本地开发环境关闭 SSL
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/${MYSQL_DATABASE:greenplant}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true&useSSL=false
+    username: ${MYSQL_USERNAME:root}
+    password: ${MYSQL_PASSWORD:}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  main:
+    allow-circular-references: true
+  sql:
+    init:
+      mode: always
+      encoding: utf-8
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+mybatis:
+  # Mapper 接口对应的 SQL XML 文件位置。
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.greenplant.entity
+  configuration:
+    # MySQL 的 user_id 自动映射为 Java 的 userId。
+    map-underscore-to-camel-case: true
+    # 本地调试需要查看 SQL 时可改为 org.apache.ibatis.logging.stdout.StdOutImpl。
+    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+
+app:
+  jwt:
+    # 【正式部署必须改】JWT 签名密钥；本地学习可使用默认值。
+    secret: ${JWT_SECRET:greenplant-course-design-secret-key-0123456789abcdef}
+    expire-hours: 72
+  # 【必须放在小程序项目目录之外】
+  # uploads 目录绝对不能落在 zhinengPlant 里：识别时后端会把上传的图片落盘到
+  # <upload-dir>/ai/，微信开发者工具监听到项目目录文件变化后会完整重新编译，
+  # 小程序重启回到启动页，表现为"识别完自动返回主页"。头像、导出文件同理。
+  # 如需换个位置，设置环境变量 UPLOAD_DIR（可写在 Plant/.env 里）。
+  upload-dir: ${UPLOAD_DIR:/Users/ccx/Plant/uploads}
+
+logging:
+  level:
+    com.greenplant: info
+
+sky:
+  wechat:
+    # ==================== 【微信登录必须填写】 ====================
+    # 在 Plant/.env 中填写小程序 AppID 与 AppSecret。
+    appid: ${WECHAT_APPID:}
+    secret: ${WECHAT_APP_SECRET:}
+
+# AI 提供方：local 使用组员训练的 ONNX 模型；plant-id 可恢复外部 Plant.id。
+ai:
+  provider: local
+  local:
+    # 【通常不用改】AI 服务地址；AI 和 Java 不在同一台电脑时才需要修改。
+    base-url: ${AI_BASE_URL:http://127.0.0.1:5001}
+
+# Plant.id 暂停使用，配置保留用于需要时切回。
+plant-id:
+  base-url: https://api.plant.id/v3
+  # 【当前不用填】只有把 ai.provider 改回 plant-id 时才需要配置。
+  api-key: ${PLANT_ID_API_KEY:}

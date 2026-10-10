@@ -1,0 +1,15 @@
+# 推理服务依赖（venv 里已全部装好，此处仅作记录/复现用）
+#
+#   C:/Plant/plant-ai/venv/Scripts/python.exe -m pip install -r requirements.txt
+#
+# 注：torch/torchvision 是训练侧依赖，推理代码直接把 numpy HWC 转成 CHW，故不需要 PyTorch。
+#     若要从零复现整个环境，torch 需走阿里云镜像单独装，见 ml/requirements.txt 的说明。
+
+fastapi>=0.115
+uvicorn[standard]>=0.34
+python-multipart>=0.0.18
+
+onnxruntime>=1.16
+numpy>=1.24
+Pillow>=10.0
+albumentations>=1.4,<2.0

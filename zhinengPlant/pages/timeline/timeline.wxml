@@ -1,0 +1,13 @@
+<view class="page">
+  <view class="card">
+    <view class="card-title">养护时光轴</view>
+    <view class="tl">
+      <view wx:for="{{list}}" wx:key="id" class="tl-item">
+        <view class="tm">{{item.time}}</view>
+        <view class="tt">{{item.text}}</view>
+        <view class="td">操作人：{{item.member}}</view>
+      </view>
+    </view>
+    <view class="note note-center">记录了它每一次被照顾的时刻</view>
+  </view>
+</view>

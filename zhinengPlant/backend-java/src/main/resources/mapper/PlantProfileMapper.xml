@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.PlantProfileMapper">
+    <!-- 植物档案的增删改查；列表按建档时间倒序。 -->
+    <sql id="columns">id, user_id, species_id, name, pot_material, init_height_cm, emotion_tag, status, last_water_at, water_interval_days, photo_url, created_at</sql>
+    <select id="findById" resultType="com.greenplant.entity.PlantProfile">
+        SELECT <include refid="columns"/> FROM plant_profile WHERE id=#{id}
+    </select>
+    <select id="findByUserIdOrderByCreatedAtDesc" resultType="com.greenplant.entity.PlantProfile">
+        SELECT <include refid="columns"/> FROM plant_profile WHERE user_id=#{userId} ORDER BY created_at DESC
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO plant_profile(user_id, species_id, name, pot_material, init_height_cm, emotion_tag, status,
+                                  last_water_at, water_interval_days, photo_url, created_at)
+        VALUES(#{userId}, #{speciesId}, #{name}, #{potMaterial}, #{initHeightCm}, #{emotionTag}, #{status},
+               #{lastWaterAt}, #{waterIntervalDays}, #{photoUrl}, #{createdAt})
+    </insert>
+    <update id="update">
+        UPDATE plant_profile SET user_id=#{userId}, species_id=#{speciesId}, name=#{name}, pot_material=#{potMaterial},
+        init_height_cm=#{initHeightCm}, emotion_tag=#{emotionTag}, status=#{status}, last_water_at=#{lastWaterAt},
+        water_interval_days=#{waterIntervalDays}, photo_url=#{photoUrl} WHERE id=#{id}
+    </update>
+    <delete id="deleteById">DELETE FROM plant_profile WHERE id=#{id}</delete>
+</mapper>

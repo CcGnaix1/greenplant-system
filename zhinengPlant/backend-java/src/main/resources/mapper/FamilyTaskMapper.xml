@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.FamilyTaskMapper">
+    <!-- 家庭养护任务的列表、分配和完成状态更新。 -->
+    <select id="findById" resultType="com.greenplant.entity.FamilyTask">
+        SELECT id, family_id, plant_id, title, assignee_id, due, done, created_at FROM family_task WHERE id=#{id}
+    </select>
+    <select id="findByFamilyIdOrderByIdDesc" resultType="com.greenplant.entity.FamilyTask">
+        SELECT id, family_id, plant_id, title, assignee_id, due, done, created_at
+        FROM family_task WHERE family_id=#{familyId} ORDER BY id DESC
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO family_task(family_id, plant_id, title, assignee_id, due, done, created_at)
+        VALUES(#{familyId}, #{plantId}, #{title}, #{assigneeId}, #{due}, #{done}, #{createdAt})
+    </insert>
+    <update id="update">
+        UPDATE family_task SET family_id=#{familyId}, plant_id=#{plantId}, title=#{title},
+        assignee_id=#{assigneeId}, due=#{due}, done=#{done} WHERE id=#{id}
+    </update>
+</mapper>

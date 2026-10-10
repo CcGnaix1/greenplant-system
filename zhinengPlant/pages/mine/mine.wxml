@@ -1,0 +1,23 @@
+<view class="page mine-page">
+  <view class="profile-hero">
+    <view class="hero-orb orb-one"></view><view class="hero-orb orb-two"></view>
+    <view class="hero-top"><view><view class="profile-eyebrow">MY GREEN LIFE</view><view class="profile-title">我的绿色生活</view><view class="profile-subtitle">记录每一次用心养护</view></view><view class="leaf-mark">❧</view></view>
+    <view class="user-card">
+      <block wx:if="{{user}}"><view class="avatar-wrap" bindtap="changeAvatar"><view class="avatar"><image wx:if="{{user.avatarUrl}}" src="{{user.avatarUrl}}" mode="aspectFill" /><text wx:else>{{user.name[0]}}</text></view><view class="avatar-edit"><image src="/assets/icons/camera.svg" mode="aspectFit" /></view></view><view class="who"><view class="user-line"><view class="uname">{{user.name}}</view><view class="role-chip">{{user.role === 'owner' ? '管理员' : '家庭成员'}}</view></view><view class="urole">点击头像可以更换照片</view></view></block>
+      <block wx:else><view class="avatar-wrap"><view class="avatar">?</view></view><view class="who"><view class="uname">尚未登录</view><view class="urole">登录后同步植物与家庭协作数据</view></view><view class="login-arrow" bindtap="goLogin">登录 ›</view></block>
+    </view>
+  </view>
+  <view class="section-head"><view><view class="section-title">养护服务</view><view class="section-desc">管理你的绿植生活</view></view><view class="service-count">5 项服务</view></view>
+  <view class="service-grid">
+    <view class="service-card green" bindtap="goPlan"><view class="service-icon"><image src="/assets/icons/calendar.svg" mode="aspectFit" /></view><view class="service-name">养护计划</view><view class="service-note">定时提醒，不错过养护</view><view class="service-arrow">›</view></view>
+    <view class="service-card amber" bindtap="goFamily"><view class="service-icon"><image src="/assets/icons/family.svg" mode="aspectFit" /></view><view class="service-name">家庭协作</view><view class="service-note">一起分工照顾植物</view><view class="service-arrow">›</view></view>
+  </view>
+  <view class="menu-card">
+    <view class="menu-row" bindtap="goDiagnose"><view class="menu-icon diagnose"><image src="/assets/icons/health.svg" mode="aspectFit" /></view><view class="menu-main"><view class="menu-title">健康诊断</view><view class="menu-note">识别叶片问题并获取养护建议</view></view><view class="go">›</view></view>
+    <view class="menu-row" bindtap="goTimeline"><view class="menu-icon timeline"><image src="/assets/icons/timeline.svg" mode="aspectFit" /></view><view class="menu-main"><view class="menu-title">养护时光轴</view><view class="menu-note">回顾浇水、施肥和成长记录</view></view><view class="go">›</view></view>
+    <view class="menu-row" bindtap="goExport"><view class="menu-icon export"><image src="/assets/icons/export.svg" mode="aspectFit" /></view><view class="menu-main"><view class="menu-title">数据导出</view><view class="menu-note">生成中文 PDF 或 Excel 报告</view></view><view class="format-chip">PDF · XLS</view><view class="go">›</view></view>
+  </view>
+  <block wx:if="{{user}}"><view class="account-actions"><view class="account-btn" bindtap="switchAccount">切换账号</view><view class="account-btn logout" bindtap="logout">退出登录</view></view></block>
+  <block wx:else><view class="login-btn" bindtap="goLogin">登录 / 注册</view></block>
+  <view class="footer-copy">GREEN PLANT · 让养护成为日常的小确幸</view>
+</view>

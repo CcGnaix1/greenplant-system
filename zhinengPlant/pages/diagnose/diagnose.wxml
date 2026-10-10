@@ -1,0 +1,39 @@
+<view class="page">
+  <view class="page-intro"><view class="intro-tag">AI 健康诊断</view><view class="intro-title">发现叶片问题，及时处理</view><view class="intro-sub">建议拍摄出现病斑、发黄或虫害的部位</view></view>
+
+  <!-- 待拍照 -->
+  <view wx:if="{{stage==='idle'}}" class="card">
+    <view class="photo lg" bindtap="chooseImage" data-type="camera">
+      <view class="camera-icon">⌾</view>
+      <view>给叶片或整株拍照</view>
+    </view>
+    <view class="btn ghost" bindtap="chooseImage" data-type="album">从相册选择病叶照片</view>
+    <view class="note note-center">AI 将识别病斑 / 虫害，并给出原因与处理建议</view>
+  </view>
+
+  <!-- 识别中 -->
+  <view wx:if="{{stage==='loading'}}" class="card">
+    <image wx:if="{{image}}" src="{{image}}" class="preview" mode="aspectFill" />
+    <view class="loading">AI 正在分析病况…</view>
+  </view>
+
+  <!-- 报告 -->
+  <view wx:if="{{stage==='done' && report}}">
+    <view class="card">
+      <view class="card-title">诊断结果 <text class="chip amber">置信度 {{report.confidence * 100}}%</text></view>
+      <view class="likely">{{report.likely}}</view>
+      <view class="row2"><text class="k">原因分析</text><text>{{report.cause}}</text></view>
+      <view class="row2"><text class="k urgent">紧急处理</text><text>{{report.urgent}}</text></view>
+      <view class="row2"><text class="k">长期养护</text><text>{{report.longTerm}}</text></view>
+    </view>
+
+    <view class="card">
+      <view class="card-title">诊断结果准确吗？</view>
+      <view class="btn-row">
+        <view class="btn" data-ok="{{true}}" bindtap="feedback">很有帮助</view>
+        <view class="btn ghost" data-ok="{{false}}" bindtap="feedback">结果有误</view>
+      </view>
+    </view>
+    <view class="btn ghost" bindtap="reset">重新诊断</view>
+  </view>
+</view>

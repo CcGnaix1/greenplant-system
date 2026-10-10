@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.PlantSpeciesMapper">
+    <!-- 植物品种及其生长环境快照查询。 -->
+    <sql id="columns">id, name, latin_name, env_snapshot, created_at</sql>
+    <select id="findById" resultType="com.greenplant.entity.PlantSpecies">
+        SELECT <include refid="columns"/> FROM plant_species WHERE id=#{id}
+    </select>
+    <select id="findAll" resultType="com.greenplant.entity.PlantSpecies">
+        SELECT <include refid="columns"/> FROM plant_species ORDER BY id ASC
+    </select>
+</mapper>

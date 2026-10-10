@@ -1,0 +1,29 @@
+<view class="page">
+  <view class="card">
+    <view class="field">
+      <label>植物品种（识别结果自动带入）</label>
+      <view class="ctrl"><input value="{{species}}" bindinput="onSpecies" placeholder="如：龟背竹" /></view>
+    </view>
+    <view class="field">
+      <label>给它起个名字</label>
+      <view class="ctrl"><input value="{{name}}" bindinput="onName" placeholder="如：客厅大龟" /></view>
+    </view>
+    <view class="field">
+      <label>摆放位置</label>
+      <view class="ctrl"><input value="{{family}}" bindinput="onFamily" placeholder="如：客厅 / 书房" /></view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">环境偏好（按品种同步，可改）</view>
+    <view class="kv">
+      <view class="kv-item"><view class="k">温度</view><view class="v">{{env.temp}}</view></view>
+      <view class="kv-item"><view class="k">湿度</view><view class="v">{{env.humidity}}</view></view>
+      <view class="kv-item"><view class="k">光照</view><view class="v">{{env.light}}</view></view>
+      <view class="kv-item"><view class="k">浇水</view><view class="v">{{env.waterInterval}}</view></view>
+    </view>
+    <view class="note">建档后系统会据此生成个性化浇水/施肥提醒</view>
+  </view>
+
+  <view class="btn" bindtap="submit">完成建档</view>
+</view>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.CarePlanItemMapper">
+    <!-- 未完成养护计划查询，以及计划新增和状态更新。 -->
+    <select id="findByPlantIdAndDoneOrderByDueDateAsc" resultType="com.greenplant.entity.CarePlanItem">
+        SELECT id, plant_id, task_type, due_date, done, created_at FROM care_plan_item
+        WHERE plant_id=#{plantId} AND done=#{done} ORDER BY due_date ASC
+    </select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO care_plan_item(plant_id, task_type, due_date, done)
+        VALUES(#{plantId}, #{taskType}, #{dueDate}, #{done})
+    </insert>
+    <update id="update">
+        UPDATE care_plan_item SET plant_id=#{plantId}, task_type=#{taskType}, due_date=#{dueDate}, done=#{done} WHERE id=#{id}
+    </update>
+</mapper>

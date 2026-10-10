@@ -1,0 +1,10 @@
+{
+  "old": "D:\\Plant\\plant-ai\\output_v30_320",
+  "new": "D:/Plant/plant-ai/output_v30_320",
+  "eval_set": 1336,
+  "common": 30,
+  "old_acc": 0.9319938176197836,
+  "new_acc": 0.9319938176197836,
+  "delta": 0.0,
+  "new_model_own_test": 0.980410447761194
+}

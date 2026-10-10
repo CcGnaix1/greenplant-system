@@ -1,0 +1,8 @@
+.page-intro{padding:14rpx 6rpx 30rpx}.intro-tag{display:inline-block;color:#a46d24;background:#f9edda;border-radius:999rpx;padding:8rpx 16rpx;font-size:20rpx}.intro-title{font-size:38rpx;font-weight:800;color:#263c2f;margin-top:18rpx}.intro-sub{font-size:22rpx;color:#98a29c;margin-top:9rpx}.camera-icon{width:92rpx;height:92rpx;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;color:#4a9660;font-size:58rpx;box-shadow:0 12rpx 28rpx rgba(54,107,66,.12);margin-bottom:12rpx}
+.preview { width: 100%; height: 360rpx; border-radius: 20rpx; }
+.loading { text-align: center; color: #15803d; padding: 30rpx 0; font-size: 26rpx; }
+.likely { font-size: 30rpx; font-weight: 700; margin-bottom: 16rpx; }
+.row2 { margin-top: 18rpx; }
+.row2 .k { display: block; font-size: 22rpx; color: #16a34a; font-weight: 600; margin-bottom: 6rpx; }
+.row2 .k.urgent { color: #b45309; }
+.row2 text:last-child { font-size: 26rpx; color: #4b5563; line-height: 1.6; }

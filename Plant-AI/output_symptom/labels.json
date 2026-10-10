@@ -1,0 +1,38 @@
+[
+  {
+    "name": "healthy",
+    "id": 0,
+    "label": "健康",
+    "dict_code": null
+  },
+  {
+    "name": "leaf_spot",
+    "id": 1,
+    "label": "叶斑/坏死病",
+    "dict_code": "leaf_spot_brown"
+  },
+  {
+    "name": "pest_damage",
+    "id": 2,
+    "label": "虫害(螨类/刺吸)",
+    "dict_code": "spider_mite"
+  },
+  {
+    "name": "powdery_mildew",
+    "id": 3,
+    "label": "白粉病",
+    "dict_code": "leaf_spot_white"
+  },
+  {
+    "name": "rust",
+    "id": 4,
+    "label": "锈病",
+    "dict_code": "rust"
+  },
+  {
+    "name": "yellowing",
+    "id": 5,
+    "label": "黄化/失绿",
+    "dict_code": "yellowing_whole"
+  }
+]

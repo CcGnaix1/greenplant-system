@@ -1,0 +1,117 @@
+{
+  "indomain": {
+    "n": 10709,
+    "acc": 0.9960780651788216,
+    "macro_recall": 0.9974706621446608,
+    "per_class_recall": {
+      "healthy": 0.9980092899800929,
+      "leaf_spot": 0.9922071968828787,
+      "pest_damage": 1.0,
+      "powdery_mildew": 0.998324958123953,
+      "rust": 0.9962825278810409,
+      "yellowing": 1.0
+    }
+  },
+  "crossdomain_observation": {
+    "note": "无症状标注，仅为误报倾向观察，不是准确率",
+    "n": 240,
+    "pred_distribution": {
+      "healthy": 240
+    },
+    "healthy_rate": 1.0,
+    "high_conf_false_positives": 0,
+    "high_conf_details": [],
+    "per_species": {
+      "万年青": {
+        "healthy": 8
+      },
+      "兰花": {
+        "healthy": 8
+      },
+      "发财树": {
+        "healthy": 8
+      },
+      "吊兰": {
+        "healthy": 8
+      },
+      "多肉植物": {
+        "healthy": 8
+      },
+      "富贵竹": {
+        "healthy": 8
+      },
+      "常春藤": {
+        "healthy": 8
+      },
+      "散尾葵": {
+        "healthy": 8
+      },
+      "文竹": {
+        "healthy": 8
+      },
+      "栀子花": {
+        "healthy": 8
+      },
+      "橡皮树": {
+        "healthy": 8
+      },
+      "波斯顿蕨": {
+        "healthy": 8
+      },
+      "琴叶榕": {
+        "healthy": 8
+      },
+      "白掌": {
+        "healthy": 8
+      },
+      "竹芋": {
+        "healthy": 8
+      },
+      "红掌": {
+        "healthy": 8
+      },
+      "绿萝": {
+        "healthy": 8
+      },
+      "芦荟": {
+        "healthy": 8
+      },
+      "茉莉花": {
+        "healthy": 8
+      },
+      "薄荷": {
+        "healthy": 8
+      },
+      "虎皮兰": {
+        "healthy": 8
+      },
+      "袖珍椰子": {
+        "healthy": 8
+      },
+      "豆瓣绿": {
+        "healthy": 8
+      },
+      "迷迭香": {
+        "healthy": 8
+      },
+      "金钱树": {
+        "healthy": 8
+      },
+      "铜钱草": {
+        "healthy": 8
+      },
+      "鹅掌柴": {
+        "healthy": 8
+      },
+      "鹤望兰": {
+        "healthy": 8
+      },
+      "龙血树": {
+        "healthy": 8
+      },
+      "龟背竹": {
+        "healthy": 8
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.CareRecordMapper">
+    <!-- 浇水、施肥、修剪等养护记录的查询、统计与写入。 -->
+    <sql id="columns">id, plant_id, user_id, type, note, created_at</sql>
+    <select id="findByPlantIdOrderByCreatedAtDesc" resultType="com.greenplant.entity.CareRecord">
+        SELECT <include refid="columns"/> FROM care_record WHERE plant_id=#{plantId} ORDER BY created_at DESC
+    </select>
+    <select id="findByUserIdOrderByCreatedAtDesc" resultType="com.greenplant.entity.CareRecord">
+        SELECT <include refid="columns"/> FROM care_record WHERE user_id=#{userId} ORDER BY created_at DESC
+    </select>
+    <select id="countByPlantId" resultType="long">SELECT COUNT(*) FROM care_record WHERE plant_id=#{plantId}</select>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO care_record(plant_id, user_id, type, note, created_at)
+        VALUES(#{plantId}, #{userId}, #{type}, #{note}, #{createdAt})
+    </insert>
+    <update id="update">
+        UPDATE care_record SET plant_id=#{plantId}, user_id=#{userId}, type=#{type}, note=#{note} WHERE id=#{id}
+    </update>
+</mapper>

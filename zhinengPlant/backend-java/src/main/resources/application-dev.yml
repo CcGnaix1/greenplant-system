@@ -1,0 +1,9 @@
+sky:
+  wechat:
+    # 【必须修改】不要把真实 AppSecret 写进代码；请填写 Plant/.env。
+    appid: ${WECHAT_APPID:}
+    secret: ${WECHAT_APP_SECRET:}
+
+plant-id:
+  # 【当前暂停使用】需要恢复 Plant.id 时，在 Plant/.env 填写 PLANT_ID_API_KEY。
+  api-key: ${PLANT_ID_API_KEY:}

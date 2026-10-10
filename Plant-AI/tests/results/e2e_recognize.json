@@ -1,0 +1,289 @@
+{
+  "note": "复现 seed=42 切分的室内 test 段；每类抽样少，仅验证链路与 knowledgeId 映射",
+  "per_class": {
+    "万年青": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "兰花": {
+      "n": 5,
+      "correct": 3,
+      "acc": 0.6
+    },
+    "发财树": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "吊兰": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "多肉植物": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "富贵竹": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "常春藤": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "散尾葵": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "文竹": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "栀子花": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "橡皮树": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "波斯顿蕨": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "琴叶榕": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "白掌": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "竹芋": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "红掌": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "绿萝": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "芦荟": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "茉莉花": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "薄荷": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "虎皮兰": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "袖珍椰子": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "豆瓣绿": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "迷迭香": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "金钱树": {
+      "n": 5,
+      "correct": 3,
+      "acc": 0.6
+    },
+    "铜钱草": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "鹅掌柴": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "鹤望兰": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    },
+    "龙血树": {
+      "n": 5,
+      "correct": 5,
+      "acc": 1.0
+    },
+    "龟背竹": {
+      "n": 5,
+      "correct": 4,
+      "acc": 0.8
+    }
+  },
+  "total": 150,
+  "correct": 134,
+  "acc": 0.8933333333333333,
+  "mismatches": [
+    {
+      "file": "734876773.jpg",
+      "true": "兰花",
+      "true_kid": 6,
+      "pred": "富贵竹",
+      "pred_kid": 13,
+      "conf": 0.3793
+    },
+    {
+      "file": "638937394.jpg",
+      "true": "兰花",
+      "true_kid": 6,
+      "pred": "多肉植物",
+      "pred_kid": 4,
+      "conf": 0.2182
+    },
+    {
+      "file": "732834453.jpg",
+      "true": "发财树",
+      "true_kid": 5,
+      "pred": "栀子花",
+      "pred_kid": 17,
+      "conf": 0.4407
+    },
+    {
+      "file": "737567764.jpg",
+      "true": "多肉植物",
+      "true_kid": 4,
+      "pred": "豆瓣绿",
+      "pred_kid": 28,
+      "conf": 0.2899
+    },
+    {
+      "file": "654016452.jpg",
+      "true": "富贵竹",
+      "true_kid": 13,
+      "pred": "多肉植物",
+      "pred_kid": 4,
+      "conf": 0.2072
+    },
+    {
+      "file": "722570300.jpg",
+      "true": "常春藤",
+      "true_kid": 10,
+      "pred": "红掌",
+      "pred_kid": 24,
+      "conf": 0.6229
+    },
+    {
+      "file": "707985214.jpg",
+      "true": "文竹",
+      "true_kid": 12,
+      "pred": "常春藤",
+      "pred_kid": 10,
+      "conf": 0.3295
+    },
+    {
+      "file": "731233408.jpg",
+      "true": "白掌",
+      "true_kid": 11,
+      "pred": "绿萝",
+      "pred_kid": 2,
+      "conf": 0.3663
+    },
+    {
+      "file": "735728897.jpg",
+      "true": "绿萝",
+      "true_kid": 2,
+      "pred": "常春藤",
+      "pred_kid": 10,
+      "conf": 0.4165
+    },
+    {
+      "file": "740110171.jpg",
+      "true": "芦荟",
+      "true_kid": 27,
+      "pred": "鹤望兰",
+      "pred_kid": 25,
+      "conf": 0.2078
+    },
+    {
+      "file": "740690778.jpg",
+      "true": "虎皮兰",
+      "true_kid": 3,
+      "pred": "芦荟",
+      "pred_kid": 27,
+      "conf": 0.5236
+    },
+    {
+      "file": "741525380.jpg",
+      "true": "迷迭香",
+      "true_kid": 16,
+      "pred": "万年青",
+      "pred_kid": 22,
+      "conf": 0.1651
+    },
+    {
+      "file": "728489688.jpg",
+      "true": "金钱树",
+      "true_kid": 21,
+      "pred": "兰花",
+      "pred_kid": 6,
+      "conf": 0.1793
+    },
+    {
+      "file": "722583406.jpg",
+      "true": "金钱树",
+      "true_kid": 21,
+      "pred": "富贵竹",
+      "pred_kid": 13,
+      "conf": 0.403
+    },
+    {
+      "file": "733058820.jpg",
+      "true": "鹤望兰",
+      "true_kid": 25,
+      "pred": "绿萝",
+      "pred_kid": 2,
+      "conf": 0.7608
+    },
+    {
+      "file": "731334376.jpg",
+      "true": "龟背竹",
+      "true_kid": 1,
+      "pred": "鹤望兰",
+      "pred_kid": 25,
+      "conf": 0.5362
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="card">
+    <view class="card-title">导出养护数据</view>
+    <view class="chip-row">
+      <view class="chip {{fmt==='pdf' ? 'sel' : 'gray'}}" data-f="pdf" bindtap="pick">PDF 报告</view>
+      <view class="chip {{fmt==='excel' ? 'sel' : 'gray'}}" data-f="excel" bindtap="pick">Excel 表格</view>
+    </view>
+    <view class="note">导出内容：当前账号的全部养护记录（由后端生成后下载打开）</view>
+  </view>
+  <view class="btn" bindtap="doExport">立即导出</view>
+</view>

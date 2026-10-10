@@ -1,0 +1,444 @@
+{
+  "base": "http://127.0.0.1:8000/api",
+  "ai": "http://127.0.0.1:5000",
+  "total": 62,
+  "passed": 56,
+  "failed": 6,
+  "elapsed_seconds": 0.57,
+  "cases": [
+    {
+      "cid": "TC-P01",
+      "module": "植物档案",
+      "title": "GET /plant/list 返回当前用户档案列表",
+      "passed": true,
+      "detail": "http=200 code=0 档案数=4"
+    },
+    {
+      "cid": "TC-P02",
+      "module": "植物档案",
+      "title": "GET /plant/detail?id=1 返回龟背竹详情",
+      "passed": true,
+      "detail": "http=200 品种=龟背竹 高度=86"
+    },
+    {
+      "cid": "TC-P03",
+      "module": "植物档案",
+      "title": "GET /plant/detail?id=999999 档案不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040 msg=档案不存在"
+    },
+    {
+      "cid": "TC-P04",
+      "module": "植物档案",
+      "title": "GET /plant/detail 缺 id → 应为参数错误 4001",
+      "passed": false,
+      "detail": "http=200 code=5000 msg=服务器内部错误：Required request parameter 'id' for method parameter type Integer is not present（缺必填参数，应报 4001 参数错误）"
+    },
+    {
+      "cid": "TC-P05",
+      "module": "植物档案",
+      "title": "GET /plant/records?id=1 返回养护记录",
+      "passed": true,
+      "detail": "http=200 记录数=4"
+    },
+    {
+      "cid": "TC-P06",
+      "module": "植物档案",
+      "title": "GET /plant/records?id=999999 无记录返回空数组",
+      "passed": true,
+      "detail": "http=200 code=0 返回空数组（不存在的档案不报错）"
+    },
+    {
+      "cid": "TC-P07",
+      "module": "植物档案",
+      "title": "POST /plant/create 按品种名建档（species=绿萝）",
+      "passed": true,
+      "detail": "http=200 新档案 id=12 品种=绿萝"
+    },
+    {
+      "cid": "TC-P08",
+      "module": "植物档案",
+      "title": "POST /plant/create 空对象 → 名称回落「新植物」",
+      "passed": true,
+      "detail": "http=200 名称默认=新植物 id=13"
+    },
+    {
+      "cid": "TC-P09",
+      "module": "植物档案",
+      "title": "POST /plant/record 添加养护记录",
+      "passed": true,
+      "detail": "http=200 code=0 新记录=21"
+    },
+    {
+      "cid": "TC-P10",
+      "module": "植物档案",
+      "title": "POST /plant/record 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001 msg=缺少植物 id"
+    },
+    {
+      "cid": "TC-P11",
+      "module": "植物档案",
+      "title": "POST /plant/watering 一键浇水",
+      "passed": true,
+      "detail": "http=200 下次浇水=2026-10-06 dryDays=0"
+    },
+    {
+      "cid": "TC-P12",
+      "module": "植物档案",
+      "title": "POST /plant/watering 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-S01",
+      "module": "品种识别",
+      "title": "GET :5000/health 推理服务就绪且非 mock",
+      "passed": true,
+      "detail": "http=200 isMock=False 类别数=20"
+    },
+    {
+      "cid": "TC-S02",
+      "module": "品种识别",
+      "title": "POST /species/recognize 上传真图 → 真实推理",
+      "passed": true,
+      "detail": "http=200 isMock=False 首选=虎皮兰 置信度=0.8934 候选数=3"
+    },
+    {
+      "cid": "TC-S03",
+      "module": "品种识别",
+      "title": "POST /species/recognize 未带 image 部件 → 应为 4001",
+      "passed": false,
+      "detail": "http=200 code=5000 msg=服务器内部错误：Required part 'image' is not present.（缺 image 部件，应报 4001）"
+    },
+    {
+      "cid": "TC-S04",
+      "module": "品种识别",
+      "title": "POST /species/recognize 传非图片 → 回退 mock 不中断",
+      "passed": true,
+      "detail": "http=200 isMock=True（非图片 → 回退 mock）"
+    },
+    {
+      "cid": "TC-S09",
+      "module": "品种识别",
+      "title": "POST /species/recognize 空文件 → 应报参数错误",
+      "passed": false,
+      "detail": "http=200 code=0 isMock=True 首选=龟背竹 置信度=0.94（空文件应报「请选择图片」）"
+    },
+    {
+      "cid": "TC-S05",
+      "module": "品种识别",
+      "title": "GET /species/recognize 已移除（回归守卫）",
+      "passed": true,
+      "detail": "http=200 code=5000（写死数据的 GET 版本已移除，只保留 POST）"
+    },
+    {
+      "cid": "TC-S06",
+      "module": "品种识别",
+      "title": "POST :5000/recognize 数据集路径 → 403 守卫",
+      "passed": true,
+      "detail": "http=403（越出 D:/Plant/upload 被拒 → 防任意文件读取）"
+    },
+    {
+      "cid": "TC-S07",
+      "module": "品种识别",
+      "title": "POST :5000/recognize 文件不存在 → 404",
+      "passed": true,
+      "detail": "http=404"
+    },
+    {
+      "cid": "TC-S08",
+      "module": "品种识别",
+      "title": "POST :5000/recognize 合法上传路径 → 真实推理",
+      "passed": true,
+      "detail": "http=200 success=True 首选=虎皮兰 置信度=0.8934"
+    },
+    {
+      "cid": "TC-D01",
+      "module": "症状诊断",
+      "title": "GET /symptom/list 返回 9 条症状字典",
+      "passed": true,
+      "detail": "http=200 症状条数=9"
+    },
+    {
+      "cid": "TC-D02",
+      "module": "症状诊断",
+      "title": "POST /diagnose/checklist 勾选 2 个症状生成报告",
+      "passed": true,
+      "detail": "http=200 报告id=7 疑似=黄化(全叶) + 萎蔫 置信=90%"
+    },
+    {
+      "cid": "TC-D03",
+      "module": "症状诊断",
+      "title": "POST /diagnose/checklist 空症状列表 → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001 msg=请至少勾选一个症状"
+    },
+    {
+      "cid": "TC-D04",
+      "module": "症状诊断",
+      "title": "POST /diagnose/checklist 缺 symptomCodes → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-D05",
+      "module": "症状诊断",
+      "title": "POST /diagnose/checklist 无效症状码 → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001 msg=症状编码无效：[__no_such_code__]"
+    },
+    {
+      "cid": "TC-D06",
+      "module": "症状诊断",
+      "title": "POST /diagnose/photo 病叶照片存档",
+      "passed": true,
+      "detail": "http=200 落盘=D:/Plant/upload/diagnosis/1790655631885.jpg"
+    },
+    {
+      "cid": "TC-D07",
+      "module": "症状诊断",
+      "title": "GET /diagnose/submit 已移除（回归守卫）",
+      "passed": true,
+      "detail": "http=200 code=5000（会伪造诊断报告的死接口已移除）"
+    },
+    {
+      "cid": "TC-D08",
+      "module": "症状诊断",
+      "title": "POST /diagnosis/feedback 提交纠错反馈",
+      "passed": true,
+      "detail": "http=200 code=0 reportId=7"
+    },
+    {
+      "cid": "TC-D09",
+      "module": "症状诊断",
+      "title": "POST /diagnosis/feedback 缺 reportId → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-D10",
+      "module": "症状诊断",
+      "title": "POST /diagnosis/feedback 报告不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-K01",
+      "module": "知识库",
+      "title": "GET /knowledge/list 返回 20 个品种",
+      "passed": true,
+      "detail": "http=200 品种数=20（必须 20，闭集分类对齐）"
+    },
+    {
+      "cid": "TC-K02",
+      "module": "知识库",
+      "title": "GET /knowledge/list?keyword=绿 关键字过滤",
+      "passed": true,
+      "detail": "http=200 命中 1 条，均含关键字"
+    },
+    {
+      "cid": "TC-K03",
+      "module": "知识库",
+      "title": "GET /knowledge/detail?id=1 返回养护详情",
+      "passed": true,
+      "detail": "http=200 字段=['breed', 'faq', 'fertilize', 'habit', 'humidity', 'light', 'seasons', 'temp', 'water', 'waterInterval']（无品种名字段，属现有契约）"
+    },
+    {
+      "cid": "TC-K04",
+      "module": "知识库",
+      "title": "GET /knowledge/detail?id=999999 品种不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-K05",
+      "module": "知识库",
+      "title": "GET /knowledge/detail?id=abc 类型非法 → 应为 4001",
+      "passed": false,
+      "detail": "http=200 code=5000 msg=服务器内部错误：Method parameter 'id': Failed to convert value of type 'java.l（id 非数字，应报 4001）"
+    },
+    {
+      "cid": "TC-F01",
+      "module": "家庭协作",
+      "title": "GET /family/info 返回成员与任务",
+      "passed": true,
+      "detail": "http=200 成员数=3 任务数=3"
+    },
+    {
+      "cid": "TC-F02",
+      "module": "家庭协作",
+      "title": "POST /family/task 分配养护任务",
+      "passed": true,
+      "detail": "http=200 任务id=8 标题=自动化测试任务 完成=False"
+    },
+    {
+      "cid": "TC-F03",
+      "module": "家庭协作",
+      "title": "POST /family/task/done 标记任务完成",
+      "passed": true,
+      "detail": "http=200 任务id=8 done=True"
+    },
+    {
+      "cid": "TC-F04",
+      "module": "家庭协作",
+      "title": "POST /family/task/done 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-F05",
+      "module": "家庭协作",
+      "title": "POST /family/task/done 任务不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-N01",
+      "module": "通知",
+      "title": "GET /notification/list 返回通知列表",
+      "passed": true,
+      "detail": "http=200 通知数=3"
+    },
+    {
+      "cid": "TC-N02",
+      "module": "通知",
+      "title": "GET /notification/list?isRead=0 仅未读",
+      "passed": true,
+      "detail": "http=200 未读数=3（响应字段为 read，请求参数为 isRead）"
+    },
+    {
+      "cid": "TC-N03",
+      "module": "通知",
+      "title": "POST /notification/read 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-N04",
+      "module": "通知",
+      "title": "POST /notification/read 通知不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-N05",
+      "module": "通知",
+      "title": "POST /notification/read 单条标记已读",
+      "passed": true,
+      "detail": "标记通知 id=2 已读 code=0"
+    },
+    {
+      "cid": "TC-N06",
+      "module": "通知",
+      "title": "POST /notification/read-all 全部已读",
+      "passed": true,
+      "detail": "http=200 剩余未读=0"
+    },
+    {
+      "cid": "TC-P13",
+      "module": "植物档案",
+      "title": "POST /plant/update 编辑名称/位置/高度/间隔",
+      "passed": true,
+      "detail": "http=200 名称=编辑后名称 位置=北阳台 高度=42 间隔=6 天"
+    },
+    {
+      "cid": "TC-P14",
+      "module": "植物档案",
+      "title": "POST /plant/update 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-P15",
+      "module": "植物档案",
+      "title": "POST /plant/update 档案不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-P16",
+      "module": "植物档案",
+      "title": "POST /plant/delete 软删 → 列表/详情均不可见",
+      "passed": true,
+      "detail": "删除 code=0；删除后详情 code=4040；列表中仍存在=False"
+    },
+    {
+      "cid": "TC-P17",
+      "module": "植物档案",
+      "title": "POST /plant/delete 重复删除 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040（重复删除报不存在，而非 5000）"
+    },
+    {
+      "cid": "TC-P18",
+      "module": "植物档案",
+      "title": "POST /plant/delete 缺 id → 4001",
+      "passed": true,
+      "detail": "http=200 code=4001"
+    },
+    {
+      "cid": "TC-P19",
+      "module": "植物档案",
+      "title": "GET /plant/stats 真实聚合统计",
+      "passed": true,
+      "detail": "http=200 周数据=[('3周前', 0), ('2周前', 0), ('上周', 1), ('本周', 2)] 类型数=4 平均间隔=2天 记录=6 株高=86"
+    },
+    {
+      "cid": "TC-P20",
+      "module": "植物档案",
+      "title": "GET /plant/stats 档案不存在 → 4040",
+      "passed": true,
+      "detail": "http=200 code=4040"
+    },
+    {
+      "cid": "TC-P21",
+      "module": "植物档案",
+      "title": "GET /plant/export 默认导出 xlsx（结构合法）",
+      "passed": true,
+      "detail": "http=200 大小=2692B 合法zip=True 含必需部件=True"
+    },
+    {
+      "cid": "TC-P22",
+      "module": "植物档案",
+      "title": "GET /plant/export?fmt=csv 带 BOM 且仅记录",
+      "passed": true,
+      "detail": "http=200 UTF-8 BOM=True 含记录表头=True 行数=13（recordsOnly 应不含档案段）"
+    },
+    {
+      "cid": "TC-L01",
+      "module": "养护计划",
+      "title": "GET /plan/weekly 按真实状态给建议",
+      "passed": true,
+      "detail": "http=200 文案=「本周 5 盆绿植状态良好，暂时不需要浇水。」 盆栽=5 待浇=0"
+    },
+    {
+      "cid": "TC-A01",
+      "module": "鉴权",
+      "title": "无 Authorization 头访问 → 回落演示用户",
+      "passed": true,
+      "detail": "http=200 code=0（无 token 回落演示用户，属设计行为）"
+    },
+    {
+      "cid": "TC-A02",
+      "module": "鉴权",
+      "title": "无效 JWT → 回落演示用户而非 4010",
+      "passed": true,
+      "detail": "http=200 code=0（无效 token 同样不返回 4010）"
+    },
+    {
+      "cid": "TC-A03",
+      "module": "通用",
+      "title": "访问不存在路径 → 应返回 404",
+      "passed": false,
+      "detail": "http=200 code=5000（应为 404，实际落到统一 5000 兜底）"
+    },
+    {
+      "cid": "TC-A04",
+      "module": "通用",
+      "title": "上传 11MB 文件超过 10MB 上限",
+      "passed": false,
+      "detail": "http=200 code=5000 msg=服务器内部错误：Maximum upload size exceeded（已拒绝，但应归为超限而非服务器错误）"
+    }
+  ]
+}

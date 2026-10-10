@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="login-decor d1"></view><view class="login-decor d2"></view>
+  <view class="hero"><view class="hero-leaf">◆</view><text>植</text></view>
+  <view class="title">绿植智能养护</view>
+  <view class="slogan">让每一株植物，都被温柔以待</view>
+
+  <view class="seg auth-seg">
+    <view class="seg-item {{method === 'wechat' ? 'on' : ''}}" data-method="wechat" bindtap="switchMethod">微信登录</view>
+    <view class="seg-item {{method === 'phone' ? 'on' : ''}}" data-method="phone" bindtap="switchMethod">手机号登录</view>
+  </view>
+
+  <view class="card auth-card">
+    <block wx:if="{{method === 'wechat'}}">
+      <view class="field">
+        <label>你的昵称</label>
+        <view class="ctrl"><input placeholder="给自己起个名字" value="{{name}}" bindinput="onInput" /></view>
+      </view>
+      <view class="btn {{loading ? 'disabled' : ''}}" bindtap="doLogin">{{loading ? '正在登录…' : '微信一键登录'}}</view>
+      <view class="note note-center">使用当前小程序微信身份安全登录</view>
+    </block>
+
+    <block wx:else>
+      <view wx:if="{{isRegister}}" class="field">
+        <label>昵称</label>
+        <view class="ctrl"><input placeholder="如：小绿" value="{{name}}" bindinput="onInput" /></view>
+      </view>
+      <view class="field">
+        <label>手机号</label>
+        <view class="ctrl"><input type="number" maxlength="11" placeholder="请输入11位手机号" value="{{phone}}" bindinput="onPhone" /></view>
+      </view>
+      <view class="field">
+        <label>密码</label>
+        <view class="ctrl"><input password="true" placeholder="{{isRegister ? '请设置至少6位密码' : '请输入密码'}}" value="{{password}}" bindinput="onPassword" bindconfirm="doPhoneLogin" /></view>
+      </view>
+      <view class="btn {{loading ? 'disabled' : ''}}" bindtap="doPhoneLogin">{{loading ? '请稍候…' : (isRegister ? '注册并登录' : '手机号登录')}}</view>
+      <view class="mode-link" bindtap="toggleRegister">{{isRegister ? '已有账号？返回登录' : '还没有账号？立即注册'}}</view>
+      <view class="note note-center">注册后的手机号可由家庭管理员添加为成员</view>
+    </block>
+  </view>
+</view>

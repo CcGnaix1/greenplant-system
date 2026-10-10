@@ -1,0 +1,17 @@
+<view class="page">
+  <view class="card tip">
+    <view class="card-title">本周建议</view>
+    <view class="msg">{{message}}</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">提醒消息</view>
+    <view wx:for="{{list}}" wx:key="id" class="row" data-id="{{item.id}}" bindtap="markRead">
+      <view class="ic">提</view>
+      <view class="main">
+        <view class="t">{{item.title}}<text wx:if="{{!item.read}}" class="dot"></text></view>
+        <view class="s">{{item.time}}</view>
+      </view>
+    </view>
+  </view>
+</view>

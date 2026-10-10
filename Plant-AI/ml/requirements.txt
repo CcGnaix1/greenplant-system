@@ -1,0 +1,18 @@
+# 品种识别训练依赖
+#
+# 注意：torch / torchvision 走 PyTorch 官方源单独装，清华镜像没有 CUDA 版：
+#   pip install torch==2.5.1+cu121 torchvision==0.20.1+cu121 \
+#       --index-url https://download.pytorch.org/whl/cu121
+#
+# 其余包走清华镜像即可（pip 已全局配置）：
+#   pip install -r requirements.txt
+
+albumentations>=1.3.0
+opencv-python-headless>=4.8.0
+Pillow>=10.0.0
+numpy>=1.24.0
+scikit-learn>=1.3.0
+onnx>=1.14.0
+onnxruntime>=1.16.0
+matplotlib>=3.7.0
+tqdm>=4.65.0

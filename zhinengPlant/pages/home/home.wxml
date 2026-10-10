@@ -1,0 +1,51 @@
+<view class="page">
+  <view class="hero-banner">
+    <image class="hero-bg" src="/assets/hero-care-v2.jpg" mode="aspectFill" />
+    <view class="hero-wash"></view>
+    <view class="hero-top">
+      <view class="brand"><text class="brand-leaf">◆</text><view><view>绿植智能养护</view><view class="brand-sub">让每一株绿意 陪伴更久一点</view></view></view>
+      <view class="hero-tools"><view class="tool" bindtap="goKb">⌕</view><view class="tool" bindtap="goPlan">♢<text class="notify-dot"></text></view></view>
+    </view>
+    <view class="hero-slogan">今天也要<br/>照顾好它们呀<text class="heart">♡</text></view>
+    <view class="task-pill" bindtap="goPlan"><text class="sprout">♥</text><text>有 <text class="task-num">{{careDue.length + familyTasks.length}}</text> 个养护任务等你完成</text><text class="pill-arrow">›</text></view>
+  </view>
+
+  <view class="hero-actions">
+    <view class="hero-action recognize" bindtap="goScan"><view class="action-icon">▣</view><view><view class="action-title">拍照识别</view><view class="action-sub">识别植物 · 获取养护建议</view></view><view class="action-arrow">›</view></view>
+    <view class="hero-action water" bindtap="waterAll"><view class="action-icon">♧</view><view><view class="action-title">一键浇水</view><view class="action-sub">记录浇水 · 养成好习惯</view></view><view class="action-arrow">›</view></view>
+  </view>
+
+  <view class="section-head"><text>今日养护</text><text class="section-meta">{{careDue.length + familyTasks.length}} 项待完成</text></view>
+  <view class="card care-card">
+    <view wx:if="{{!careDue.length && !familyTasks.length}}" class="all-good"><view class="good-check">✓</view><view><view class="good-title">今天都照顾好了</view><view class="good-sub">植物们的状态很不错</view></view></view>
+    <view wx:for="{{careDue}}" wx:key="id" class="row" data-id="{{item.id}}" bindtap="goDetail">
+      <view class="ic">{{item.cover}}</view>
+      <view class="main">
+        <view class="t">照顾 {{item.name}}</view>
+        <view class="s">{{item.nextDue}}</view>
+      </view>
+      <view class="care-action">去完成</view>
+    </view>
+    <view wx:for="{{familyTasks}}" wx:key="id" class="family-task-row">
+      <view class="task-icon">✓</view>
+      <view class="task-main">
+        <view class="task-title">{{item.title}}</view>
+        <view class="task-meta">{{item.familyName}} · {{item.plant || '未关联植物'}}</view>
+      </view>
+      <view class="task-complete {{completingId === item.id ? 'disabled' : ''}}" data-id="{{item.id}}" catchtap="completeFamilyTask">
+        {{completingId === item.id ? '处理中' : '去完成'}}
+      </view>
+    </view>
+  </view>
+
+  <view class="section-head"><text>我的植物</text><text class="section-meta" bindtap="goCreate">＋ 添加植物</text></view>
+  <view class="plant-grid">
+    <view wx:for="{{plants}}" wx:key="id" class="plant-card" data-id="{{item.id}}" bindtap="goDetail">
+      <view class="plant-visual"><image src="{{item.image}}" mode="aspectFill" /><view class="mini-leaf">◆</view></view>
+      <view class="plant-body">
+        <view class="name">{{item.name}}</view><view class="meta">{{item.familyName || item.species}}</view><view class="plant-bottom"><text class="status-dot"></text><text>{{item.tag}}</text></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{!plants.length}}" class="empty-list">还没有植物，点击上方“添加植物”开始吧</view>
+</view>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.greenplant.mapper.GrowthMetricMapper">
+    <!-- 按时间查询植物高度和叶片数量变化。 -->
+    <select id="findByPlantIdOrderByRecordedAtAsc" resultType="com.greenplant.entity.GrowthMetric">
+        SELECT id, plant_id, height_cm, leaf_count, recorded_at FROM growth_metric
+        WHERE plant_id=#{plantId} ORDER BY recorded_at ASC
+    </select>
+</mapper>

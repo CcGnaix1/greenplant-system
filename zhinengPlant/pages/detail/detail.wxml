@@ -1,0 +1,40 @@
+<view class="page">
+  <!-- 档案头 -->
+  <view class="card head">
+    <view class="cover">{{plant.cover}}</view>
+    <view class="info">
+      <view class="name">{{plant.name}} <text class="chip gray">{{plant.familyName}}</text></view>
+      <view class="meta">{{plant.species}} · 高 {{plant.heightCm}}cm · 已养护 {{plant.recordCount}} 次</view>
+      <view class="meta due">下次：{{plant.nextDue}}</view>
+    </view>
+  </view>
+
+  <!-- 环境偏好 -->
+  <view class="card">
+    <view class="card-title">环境偏好</view>
+    <view class="kv">
+      <view class="kv-item"><view class="k">温度</view><view class="v">{{plant.env.temp}}</view></view>
+      <view class="kv-item"><view class="k">湿度</view><view class="v">{{plant.env.humidity}}</view></view>
+      <view class="kv-item"><view class="k">光照</view><view class="v">{{plant.env.light}}</view></view>
+      <view class="kv-item"><view class="k">浇水</view><view class="v">{{plant.env.waterInterval}}</view></view>
+    </view>
+  </view>
+
+  <!-- 功能入口 -->
+  <view class="grid2">
+    <view class="g" bindtap="goRecord"><view class="ic">记</view>添加养护记录</view>
+    <view class="g" bindtap="goTimeline"><view class="ic">轴</view>养护时光轴</view>
+    <view class="g" bindtap="goStats"><view class="ic">统</view>生长统计</view>
+    <view class="g" bindtap="goDiagnose"><view class="ic">诊</view>健康诊断</view>
+    <view class="g" bindtap="goAssign"><view class="ic">派</view>分配养护任务</view>
+  </view>
+
+  <!-- 最近记录 -->
+  <view class="card">
+    <view class="card-title">最近养护记录 <text class="more" bindtap="goRecord">＋记一笔</text></view>
+    <view wx:for="{{records}}" wx:key="id" class="row">
+      <view class="ic">{{item.type === 'water' ? '浇' : item.type === 'fertilize' ? '肥' : item.type === 'prune' ? '剪' : '查'}}</view>
+      <view class="main"><view class="t">{{item.text}}</view><view class="s">{{item.member}} · {{item.time}}</view></view>
+    </view>
+  </view>
+</view>

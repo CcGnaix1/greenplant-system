@@ -1,0 +1,32 @@
+<view class="page">
+  <view wx:if="{{!fam.familyId}}" class="card">
+    <view class="card-title">还没有家庭组</view>
+    <view class="note">创建家庭后可以邀请成员并分配养护任务。</view>
+    <view class="btn" bindtap="createFamily">创建我的家庭</view>
+  </view>
+
+  <block wx:if="{{fam.familyId}}">
+  <view class="card">
+    <view class="card-title">{{fam.name}} <text wx:if="{{isOwner}}" class="more" bindtap="goAddMember">＋添加成员</text></view>
+    <view wx:for="{{fam.members}}" wx:key="id" class="row">
+      <view class="ic">{{item.name[0]}}</view>
+      <view class="main">
+        <view class="t">{{item.name}} <text class="chip {{item.role==='owner' ? '' : 'gray'}}">{{item.role==='owner' ? '管理员' : '成员'}}</text></view>
+        <view class="s">{{item.phone || '微信账号'}} · 分工：{{item.duty || '共同养护'}}</view>
+      </view>
+    </view>
+    <view wx:if="{{!fam.members.length}}" class="note note-center">暂无家庭成员</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">养护任务 <text class="more" bindtap="goAssign">＋分配</text></view>
+    <view wx:for="{{fam.tasks}}" wx:key="id" class="row" data-id="{{item.id}}" data-status="{{item.done ? 'done' : 'todo'}}" bindtap="toggleTask">
+      <view class="ic" style="{{item.done ? 'background:#d1fae5' : ''}}">{{item.done ? '✓' : '○'}}</view>
+      <view class="main">
+        <view class="t" style="{{item.done ? 'text-decoration:line-through;color:#9ca3af' : ''}}">{{item.title}}</view>
+        <view class="s">{{item.plant}} · {{item.assignee}} · {{item.due}}</view>
+      </view>
+    </view>
+  </view>
+  </block>
+</view>
